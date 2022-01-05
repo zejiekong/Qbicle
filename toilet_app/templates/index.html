@@ -1,0 +1,47 @@
+<DOCTYPE! HTML>
+    <html>
+        <head>
+            <title>Qbicle</title>
+            <link rel="stylesheet" href="static/index.css">
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.0.1/socket.io.js" integrity="sha512-q/dWJ3kcmjBLU4Qc47E4A9kTB4m3wuTY7vkFJDTZKjTs8jhyGQnaUrxa0Ytd0ssMZhbNua9hE+E7Qv1j+DyZwA==" crossorigin="anonymous"></script>
+        </head>
+        <body id="body">
+            <p class="title">Qbicle</p><br>
+            <div class="box-canvas">
+                <div class="shower-pole">
+                <div class="water"></div>
+                </div>
+                <div class="bath-feet"></div>
+                <div class="bath"></div>
+            </div>
+            <div id="boxes">
+                <div id="box1">1</div>
+                <div id="box2">2</div>
+                <div id="box3">3</div>
+                <div id="box4">4</div>
+            </div>
+            <div id="container">
+                <p id="text">Green - Available</p>
+                <p id="text">Red - Occupied</p>
+            </div>     
+        </body>
+        <script>
+            var socket = io();
+            socket.connect();
+            socket.on("data",function(data){
+                let new_array = data.split(" ");
+                for(let i = 1; i < 5; i++){
+                    if(! new_array.includes(i.toString())){
+                        let box_change = document.getElementById("box"+i.toString());
+                        box_change.style.background = "#c00";
+                    }
+                    else{
+                        let box_change = document.getElementById("box"+i.toString());
+                        box_change.style.background = "green";
+                    }
+                }
+                socket.emit("sender");
+            })
+        </script>
+    </html>
+</DOCTYPE>

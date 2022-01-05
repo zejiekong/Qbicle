@@ -1,0 +1,163 @@
+:root {
+    --bath-color: white;
+    --bath-accent-color: #BFBFBF;
+    --bath-feet-color: gray;
+    --shower-color: gray;
+    --very-transparent-white: rgba(255,255, 255, 0.3);
+    --medium-transparent-white: rgba(255,255, 255, 0.8);
+  }
+  
+  body{
+    background: #5EBCA1;
+  }
+  
+  .box-canvas{
+    position: relative;
+    margin: auto;
+    display: block;
+    margin-top: 0;
+    margin-bottom: 0;
+    width: 250px;
+    height:300px;
+  }
+  
+  .shower-pole {
+    position: absolute;
+    right: 10px;
+    width: 30px;
+    height: 150px;
+    border: 15px solid var(--shower-color);
+    border-left-color: transparent;
+    border-bottom-color: transparent;
+    border-radius: 50% 50% 0 0 / 40% 20% 0 0;
+  }
+  
+  .water {
+    position: absolute;
+    width: 100px;
+    height: 180px;
+    top: 0px;
+    right: 11px;
+    transform: rotate(20deg);
+    clip-path: polygon(40% 0%, 60% 0%, 100% 100%, 0% 100%);
+  }
+  
+  .water::before {
+    content: '';
+    position: absolute;
+    width: 100px;
+    height: 540px;
+    background: repeating-linear-gradient(
+      var(--medium-transparent-white), 
+      var(--medium-transparent-white) 8px, 
+      var(--very-transparent-white) 36px,
+      var(--medium-transparent-white) 72px
+    );
+    animation: waterFall 2s infinite linear;
+  }
+  
+  @keyframes waterFall {
+    0% {
+      transform: translateY(-360px);
+    }
+    
+    100% {
+      transform: translateY(0px);
+    }
+  }
+  
+  /* Shower head */
+  .shower-pole::after {
+    content: '';
+    position: absolute;
+    transform: rotate(30deg);
+    right: 10px;
+    width: 40px;
+    height: 15px;
+    background: var(--shower-color);
+    clip-path: polygon(35% 0%, 65% 0%, 100% 100%, 0% 100%);
+  }
+  
+  .bath-feet {
+    position: absolute;
+    width: 250px;
+    top: 210px;
+    height: 25px;
+  }
+  
+  /* Left foot */
+  .bath-feet::before {
+    content: '';
+    position: absolute;
+    left: 15px;
+    width: 12px;
+    height: 25px;
+    background: var(--bath-feet-color);
+    border-radius: 0 0 50% 50%;
+    transform: rotate(35deg);
+  }
+  
+  /* Right foot */
+  .bath-feet::after {
+    content: '';
+    position: absolute;
+    right: 15px;
+    width: 12px;
+    height: 25px;
+    background: var(--bath-feet-color);
+    border-radius: 0 0 50% 50%;
+    transform: rotate(-35deg);
+  }
+  
+  /* Main tub */
+  .bath {
+    position: absolute;
+    left: 5px;
+    top: 150px;
+    width: 240px;
+    height: 80px;
+    background: var(--bath-color);
+    border-radius: 0 0 40% 40%;
+  }
+  
+  /* Lip at top of bath */
+  .bath::before {
+    content: '';
+    position: absolute;
+    left: -5px;
+    width: 250px;
+    height: 20px;
+    background: var(--bath-color);
+    border-radius: 10% 10% 30% 30%;
+    border-bottom: 2px solid var(--bath-accent-color);
+  }
+
+  .title{
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    font-size: 100px;
+    text-align: center;
+}
+
+#box1, #box2, #box3, #box4{
+	width:100px;
+	height:100px;
+	margin:10px;
+	padding:10px;
+    display:inline-block;
+    background:rgb(0, 121, 0);
+    display: flex;
+    justify-content:center;
+    align-items: center;
+    font-size:50px;
+}
+
+#boxes{
+  margin:auto;
+  display:flex;
+  justify-content:center;
+}
+
+#container{
+    margin:auto;
+    text-align: center;
+}
